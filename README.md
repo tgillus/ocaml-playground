@@ -10,7 +10,7 @@ Ensure the following requirements are met prior to usage:
 
 ## Exercises
 
-The OCmal [exerices](https://ocaml.org/problems) are used as a means to explore OCaml syntax, semantics, and idioms.
+The OCmal [exercises](https://ocaml.org/problems) are used as a means to explore OCaml syntax, semantics, and idioms.
 
 ## Run
 
