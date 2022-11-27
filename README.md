@@ -1,0 +1,21 @@
+# OCaml Playground
+
+This project serves as a playground for exploring this [OCaml Programming Language](https://ocaml.org/).
+
+## Prerequisites
+
+Ensure the following requirements are met prior to usage:
+
+- OCaml [installed](https://ocaml.org/docs/up-and-running)
+
+## Exercises
+
+The OCmal [exerices](https://ocaml.org/problems) are used as a means to explore OCaml syntax, semantics, and idioms.
+
+## Run
+
+```
+utop
+
+# #use "main.ml";;
+```
