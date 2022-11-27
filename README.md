@@ -1,6 +1,6 @@
 # OCaml Playground
 
-This project serves as a playground for exploring this [OCaml Programming Language](https://ocaml.org/).
+This project serves as a playground for exploring this [OCaml](https://ocaml.org/) programming language.
 
 ## Prerequisites
 
