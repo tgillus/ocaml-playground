@@ -1,14 +1,14 @@
 let rec last list =
   match list with
     [] -> None
-  | [x] -> Some(x)
-  | _::rest -> last(rest);;
+  | [x] -> Some x
+  | _::rest -> last rest;;
 
 let rec last_two list =
   match list with
     [] | [_] -> None
-  | [x;  y] -> Some(x, y)
-  | _::rest -> last_two(rest);;
+  | [x;  y] -> Some (x, y)
+  | _::rest -> last_two rest;;
 
 last [];;
 last [1];;
