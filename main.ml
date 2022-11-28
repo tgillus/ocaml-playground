@@ -1,7 +1,7 @@
 let rec last list =
   match list with
     [] -> None
-  | first::[] -> Some(first)
+  | [x] -> Some(x)
   | _::rest -> last(rest);;
 
 let rec last_two list =
