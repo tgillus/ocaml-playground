@@ -36,10 +36,10 @@ at [1; 2; 3] 2 = Some 3;;
 at [1; 2; 3] 3 = None;;
 
 let rec length list =
-  let rec helper acc = function
+  let rec count acc = function
     | [] -> acc
-    | _::rest -> helper (acc + 1) rest
-  in helper 0 list;;
+    | _::rest -> count (acc + 1) rest
+  in count 0 list;;
 
 length [] = 0;;
 length [1] = 1;;
