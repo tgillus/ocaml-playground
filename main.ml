@@ -51,10 +51,12 @@ length [ 1 ] = 1;;
 length [ 1; 2 ] = 2;;
 length [ 1; 2; 3 ] = 3
 
-let rec reverse list =
-  match list with
-  | [] | [ _ ] -> list
-  | first :: rest -> reverse rest @ [ first ]
+let reverse list =
+  let rec helper acc = function
+    | [] -> acc
+    | first :: rest -> helper (first :: acc) rest
+  in
+  helper [] list
 ;;
 
 reverse [] = [];;
