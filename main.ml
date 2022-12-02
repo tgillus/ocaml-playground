@@ -50,3 +50,14 @@ length [] = 0;;
 length [ 1 ] = 1;;
 length [ 1; 2 ] = 2;;
 length [ 1; 2; 3 ] = 3
+
+let rec reverse list =
+  match list with
+  | [] | [ _ ] -> list
+  | first :: rest -> reverse rest @ [ first ]
+;;
+
+reverse [] = [];;
+reverse [ 1 ] = [ 1 ];;
+reverse [ 1; 2 ] = [ 2; 1 ];;
+reverse [ 1; 2; 3 ] = [ 3; 2; 1 ]
