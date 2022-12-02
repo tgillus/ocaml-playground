@@ -19,3 +19,9 @@ utop
 
 # #use "main.ml";;
 ```
+
+## Format Source Code
+
+```
+ocamlformat main.ml --inplace
+```
