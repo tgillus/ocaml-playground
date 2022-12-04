@@ -38,12 +38,9 @@ at [ 1; 2; 3 ] 1 = Some 2;;
 at [ 1; 2; 3 ] 2 = Some 3;;
 at [ 1; 2; 3 ] 3 = None
 
-let rec length list =
-  let rec count acc = function
-    | [] -> acc
-    | _ :: rest -> count (acc + 1) rest
-  in
-  count 0 list
+let rec length ?(acc = 0) = function
+  | [] -> acc
+  | _ :: rest -> length ~acc:(acc + 1) rest
 ;;
 
 length [] = 0;;
@@ -51,12 +48,9 @@ length [ 1 ] = 1;;
 length [ 1; 2 ] = 2;;
 length [ 1; 2; 3 ] = 3
 
-let reverse list =
-  let rec helper acc = function
-    | [] -> acc
-    | first :: rest -> helper (first :: acc) rest
-  in
-  helper [] list
+let rec reverse ?(acc = []) = function
+  | [] -> acc
+  | first :: rest -> reverse ~acc:(first :: acc) rest
 ;;
 
 reverse [] = [];;
