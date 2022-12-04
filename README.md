@@ -25,3 +25,8 @@ utop
 ```
 ocamlformat main.ml --inplace
 ```
+
+## Textbook
+
+Cornell University publish an online OCaml [text book](https://cs3110.github.io/textbook/cover.html) for their functional programming course named CS 3110. It has accompanying YouTube [lectures](https://www.youtube.com/playlist?list=PLre5AT9JnKShBOPeuiD9b-I4XROIJhkIU) that serve as a tremendous resource for learning OCaml and functional programming.
+
