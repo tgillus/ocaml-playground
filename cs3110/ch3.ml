@@ -24,12 +24,27 @@ let rec drop n lst =
   if n = 0 then lst
   else match lst with [] -> lst | _ :: rest -> drop (n - 1) rest
 
-let rec take_tail ?(acc = []) n lst =
+let rec take' ?(acc = []) n lst =
   if n = 0 then acc
   else
     match lst with
     | [] -> acc
-    | first :: rest -> take_tail ~acc:(acc @ [ first ]) (n - 1) rest
+    | first :: rest -> take' ~acc:(acc @ [ first ]) (n - 1) rest
+
+let rec print_int_list lst =
+  match lst with
+  | [] -> ()
+  | first :: rest ->
+      Printf.printf "%i\n" first;
+      print_int_list rest
+
+let print_int_list' = List.iter (fun x -> Printf.printf "%i\n" x)
+
+type student = { first_name : string; last_name : string; gpa : float }
+
+let s = { first_name = "Tramaine"; last_name = "Gillus"; gpa = 3.7 }
+let full_name student = (student.first_name, student.last_name)
+let create_student first_name last_name gpa = { first_name; last_name; gpa }
 ;;
 
 product [] = 1;;
@@ -97,8 +112,21 @@ drop 3 [ 0; 1 ] = [];;
 drop 3 [ 0; 1; 2 ] = [];;
 drop 3 [ 0; 1; 2; 3 ] = [ 3 ];;
 drop 3 [ 0; 1; 2; 3; 4 ] = [ 3; 4 ];;
-take_tail 3 [] = [];;
-take_tail 3 [ 0 ] = [ 0 ];;
-take_tail 3 [ 0; 1 ] = [ 0; 1 ];;
-take_tail 3 [ 0; 1; 2 ] = [ 0; 1; 2 ];;
-take_tail 3 [ 0; 1; 2; 3 ] = [ 0; 1; 2 ]
+take' 3 [] = [];;
+take' 3 [ 0 ] = [ 0 ];;
+take' 3 [ 0; 1 ] = [ 0; 1 ];;
+take' 3 [ 0; 1; 2 ] = [ 0; 1; 2 ];;
+take' 3 [ 0; 1; 2; 3 ] = [ 0; 1; 2 ];;
+
+print_int_list [];
+print_int_list [ 1 ];
+print_int_list [ 1; 2 ];
+print_int_list [ 1; 2; 3 ];
+print_int_list' [];
+print_int_list' [ 1 ];
+print_int_list' [ 1; 2 ];
+print_int_list' [ 1; 2; 3 ];
+full_name s
+;;
+
+create_student "Jane" "Doe" 3.2
