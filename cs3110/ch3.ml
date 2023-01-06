@@ -45,6 +45,41 @@ type student = { first_name : string; last_name : string; gpa : float }
 let s = { first_name = "Tramaine"; last_name = "Gillus"; gpa = 3.7 }
 let full_name student = (student.first_name, student.last_name)
 let create_student first_name last_name gpa = { first_name; last_name; gpa }
+
+type poketype = Normal | Fire | Water
+type pokemon = { name : string; hp : int; ptype : poketype }
+
+let charizard = { name = "charizard"; hp = 79; ptype = Fire }
+let ember = { name = "bubble"; hp = 40; ptype = Fire }
+let squirtle = { name = "squirtle"; hp = 44; ptype = Water }
+let bubble = { name = "bubble"; hp = 40; ptype = Water }
+let facade = { name = "facade"; hp = 70; ptype = Normal }
+let covet = { name = "covet"; hp = 60; ptype = Normal }
+let safe_hd = function [] -> None | first :: _ -> Some first
+let safe_tl = function [] -> None | _ :: rest -> Some rest
+
+let rec max_hp = function
+  | [] -> None
+  | x :: rest -> (
+      match max_hp rest with
+      | None -> Some x
+      | Some y -> Some (if x.hp > y.hp then x else y))
+
+let date1 = (1981, 3, 30)
+let date2 = (1986, 3, 26)
+let date3 = (2000, 8, 9)
+
+let is_before (year1, month1, day1) (year2, month2, day2) =
+  year1 < year2
+  || (year1 = year2 && month1 < month2)
+  || (year1 = year2 && month1 = month2 && day1 < day2)
+
+let rec earliest_date = function
+  | [] -> None
+  | x :: rest -> (
+      match earliest_date rest with
+      | None -> Some x
+      | Some y -> Some (if is_before x y then x else y))
 ;;
 
 product [] = 1;;
@@ -129,4 +164,30 @@ print_int_list' [ 1; 2; 3 ];
 full_name s
 ;;
 
-create_student "Jane" "Doe" 3.2
+create_student "Jane" "Doe" 3.2;;
+safe_hd [] = None;;
+safe_hd [ 1 ] = Some 1;;
+safe_hd [ 1; 2 ] = Some 1;;
+safe_tl [] = None;;
+safe_tl [ 1 ] = Some [];;
+safe_tl [ 1; 2 ] = Some [ 2 ];;
+max_hp [] = None;;
+max_hp [ charizard ] = Some charizard;;
+max_hp [ charizard; ember ] = Some charizard;;
+max_hp [ ember; charizard ] = Some charizard;;
+max_hp [ ember; facade; bubble ] = Some facade;;
+max_hp [ ember; bubble; facade ] = Some facade;;
+is_before date1 date2 = true;;
+is_before date1 date1 = false;;
+is_before date3 date2 = false;;
+earliest_date [] = None;;
+earliest_date [ date1 ] = Some date1;;
+earliest_date [ date1 ] = Some date1;;
+earliest_date [ date1; date2 ] = Some date1;;
+earliest_date [ date2; date1 ] = Some date1;;
+earliest_date [ date2; date3 ] = Some date2;;
+earliest_date [ date3; date2 ] = Some date2;;
+earliest_date [ date1; date2; date3 ] = Some date1;;
+earliest_date [ date2; date1; date3 ] = Some date1;;
+earliest_date [ date1; date3; date2 ] = Some date1;;
+earliest_date [ date3; date2; date1 ] = Some date1
