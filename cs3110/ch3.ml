@@ -38,7 +38,7 @@ let rec print_int_list lst =
       Printf.printf "%i\n" first;
       print_int_list rest
 
-let print_int_list' = List.iter (fun x -> Printf.printf "%i\n" x)
+let print_int_list' = List.iter (Printf.printf "%i\n")
 
 type student = { first_name : string; last_name : string; gpa : float }
 
@@ -168,9 +168,11 @@ create_student "Jane" "Doe" 3.2;;
 safe_hd [] = None;;
 safe_hd [ 1 ] = Some 1;;
 safe_hd [ 1; 2 ] = Some 1;;
+safe_hd [ 1; 2; 3 ] = Some 1;;
 safe_tl [] = None;;
 safe_tl [ 1 ] = Some [];;
 safe_tl [ 1; 2 ] = Some [ 2 ];;
+safe_tl [ 1; 2; 3 ] = Some [ 2; 3 ];;
 max_hp [] = None;;
 max_hp [ charizard ] = Some charizard;;
 max_hp [ charizard; ember ] = Some charizard;;
