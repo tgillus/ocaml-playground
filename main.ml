@@ -20,8 +20,8 @@ last_two [ 1 ] = None;;
 last_two [ 1; 2 ] = Some (1, 2);;
 last_two [ 1; 2; 3 ] = Some (2, 3)
 
-let rec at list n =
-  match (list, n) with
+let rec at lst n =
+  match (lst, n) with
   | [], _ -> None
   | first :: _, 0 -> Some first
   | _ :: rest, _ -> at rest (n - 1)
