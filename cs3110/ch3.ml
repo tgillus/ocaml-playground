@@ -80,6 +80,12 @@ let rec earliest_date = function
       match earliest_date rest with
       | None -> Some x
       | Some y -> Some (if is_before x y then x else y))
+
+let insert x y lst = (x, y) :: lst
+
+let rec lookup x = function
+  | [] -> None
+  | (x', y) :: t -> if x = x' then Some y else lookup x t
 ;;
 
 product [] = 1;;
